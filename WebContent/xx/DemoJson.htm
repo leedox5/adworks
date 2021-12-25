@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        .blue {background-color: blue;}
+        .yellow {background-color: yellow;}
+    </style>
+	<script src="/ADWorks/js/jquery-1.8.1.js"></script>
+	<script>
+	    var text = "hello";
+	    var json = [
+	           {"LVL" : "2" ,"NO" : "subpart1","YN":"N"}
+	        ,  {"LVL" : "3" ,"NO" : "subpart2","YN":"N"}
+            ,  {"LVL" : "3" ,"NO" : "subpart3","YN":"N"}
+            ,  {"LVL" : "3" ,"NO" : "subpart4","YN":"N"}
+	    ]; 
+		$(function(){
+			$('#console').append('<div>'+new Date()+' '+text+'</div>');
+
+			var t1 = '<table id="tbl1" border="1">'
+			t1 += '<tr><td  colspan="4"><input type="checkbox" id="chkall"></td></tr>';
+			$.each(json, function() {
+				t1 += '<tr>';
+				t1 += '<td><input type="checkbox" class="t1"></input></td>';
+				$.each(this, function(name, value) {
+					t1 += '<td>' + value + '</td>';
+				});
+				t1 += '</tr>'; 
+			});
+			t1 += '</table>';
+			$('#contents').append(t1);
+			$('input.t1').click(function(){
+				if($(this).is(":checked") == true) {
+                    $(this).parent().parent().find('td:last').html('Y').toggleClass('yellow');
+				}else{
+                    $(this).parent().parent().find('td:last').html('N').toggleClass('yellow');
+				}
+		    });
+
+		    $('#chkall').click(function(){
+                $('input.t1').each(function(){
+                    $(this).trigger('click');
+                });
+                /*
+		    	if($(this).is(":checked") == true) {
+                    //$('input.t1').attr("checked",true);
+                    $('input.t1').each(function(){
+                        $(this).trigger('click');
+                    });
+                }else{
+                	$('input.t1').attr("checked",false);
+                }
+                */
+			});
+
+		    $('#btn1').click(function(){
+                $('#tbl1 tr').eq(1).find('td').each(function(){
+                    $(this).html('xxx');
+                });       
+            });
+
+		    $('#save').click(function(){
+			    var data = [];
+			    $('input.t1:checked').each(function(){
+				    //alert($(this).val());
+				    //alert($(this).parent().parent().find('td:last').html());
+				    data.push($(this).parent().parent().find('td').eq(2).html());
+				});
+				var data_str = data.join(',');
+				//alert(data_str);
+				$.ajax({
+					type: "POST",
+					url: "/mcams/servlet/mobis.mcams.ps.servlet.JAR_PSL3_S",
+					data: {COMH_FUNC:"YY", data: data_str}
+				}).done(function(msg){
+					alert("Msg: " + msg);
+				});
+			});
+		    
+			$.getJSON('/mcams/servlet/mobis.mcams.ps.servlet.JAR_PSL3_S?COMH_FUNC=XX', function(json) {
+	            var table='<table id="tbl" border="1">';
+
+	            $.each(json, function() {
+                    table += '<tr>';
+                    table += '<td><input type="checkbox" class="t2"></input></td>';
+                    $.each(this, function(name, value) {
+                        table += '<td>' + value + '</td>';
+                    });
+                    table += '</tr>'; 
+                });
+                
+                table += '</table>';
+                $('#contents1').html(table);
+                $('input.t2').click(function(){
+                    //alert($(this).parent().parent().find('td').last().html());
+                    alert($(this).parent().parent().find('td:last').html());
+                    //alert($(this).parent().parent().find('td').eq(1).html());
+                    
+                    $(this).parent().parent().find('td').each(function(){
+                        //alert($(this).html());
+                    });
+                });
+                //$('#tbl td').click(function(){
+                //    alert($(this).html());
+                //});
+			})
+			.error(function(xhr,status,error) { alert(xhr.responseText)});
+
+		});
+
+	</script>
+</head>
+<body>
+    <button id="save">Save</button>
+    <button id="btn1">Test</button>
+	<div id="console"></div>
+	<div id="contents"></div>
+	<div id="contents1"></div>
+</body>
+</html>

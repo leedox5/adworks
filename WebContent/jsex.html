@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Javascript Practice</title>
+<script type="text/javascript">
+	function runMulti() {
+		var a = parseInt(document.getElementById("a").value);
+		var b = parseInt(document.getElementById("b").value);
+		
+		for(var i = 1; i < b + 1; i++) {
+			document.write(a + "  * " + i + " = " + a * i + "</br>");
+		}
+	}
+</script>
+</head>
+<body>
+<div>
+요구사항0. Hello, Javascript! 를 출력하세요 </br>
+요구사항1. 구구단7단을 작성하세요 </br>
+요구사항2. 7단을 곱하기 99까지 출력하시요 </br>
+요구사항3. m단을 곱하기 n까지 출력하시오 m,n은 자연수 </br>
+ - 사용자의 이벤트 처리가 필요하다.<br>
+요구사항4. 출력하고 싶은 구구단 무작위로 n개 입력, 그리고 별표(*)를 입력하면 n개의 구구단을 한꺼번에 출력<br>
+
+변화하는 요구사항을 얼마나 안정적으로 수용할 수 있는가?
+
+</div>
+<input type="text" id="a"></input>
+<input type="text" id="b"></input>
+<button type="button" id="btn1" onclick="runMulti();">실행</button>
+<div>
+<script type="text/javascript">
+	document.write("Hello, javascript! </br>");
+	document.write("7 * 1 =  7</br>");
+	document.write("7 * 2 = 14</br>");
+	document.write("7 * 3 = 21</br>");
+	document.write("7 * 4 = 28</br>");
+	document.write("7 * 5 = 35</br>");
+	document.write("7 * 6 = 48</br>");
+	document.write("7 * 7 = 49</br>");
+	document.write("7 * 8 = 56</br>");
+	document.write("7 * 9 = 63</br></br>");
+	
+	for(var i = 1; i < 10; i++) {
+		document.write("7 * " + i + " = " + 7 * i + "</br>");
+	}
+</script>
+</div>
+</body>
+</html>

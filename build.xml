@@ -1,0 +1,121 @@
+<project name="leedox" default="test" basedir=".">
+    <property name="src.dir" location="src"/>
+    <property name="src.main.dir" location="${src.dir}/main/java"/>
+    <property name="src.test.dir" location="${src.dir}/test/java"/>
+    <property name="dest.dir" location="classes"/>
+    <property name="dest.main.dir" location="${dest.dir}/main"/>
+    <property name="dest.test.dir" location="${dest.dir}/test"/>
+	<property name="lib.dir" location="lib"/>
+    <property name="test.report.dir" location="${dest.dir}/report"/>
+	<property name="dist.dir" location="D:\dist\classes"/>
+	<property name="cmd.dir" location="D:\work\java\classes"/>
+	<property name="cmd.lib.dir" location="D:\work\java"/>
+    
+    <target name="clean">
+        <delete dir="${dest.main.dir}"/>
+        <delete dir="${dest.test.dir}"/>
+        <delete dir="${test.report.dir}"/>
+    </target>
+    <target name="compile.main">
+        <mkdir dir="${dest.main.dir}"/>
+        <javac destdir="${dest.main.dir}" includeantruntime="false">
+            <src path="${src.main.dir}"/>
+            <classpath>
+                <pathelement location="lib/junit-4.10.jar"/>
+                <pathelement location="${dest.main.dir}"/>
+                <pathelement location="${dest.test.dir}"/>
+            </classpath>
+        </javac>
+    </target>
+    <target name="compile.test" depends="compile.main">
+        <mkdir dir="${dest.test.dir}"/>
+        <javac destdir="${dest.test.dir}" includeantruntime="false">
+            <src path="${src.test.dir}"/>
+            <classpath>
+                <pathelement location="lib/junit-4.10.jar"/>
+                <pathelement location="${dest.main.dir}"/>
+            </classpath>
+        </javac>
+    </target>
+    <target name="run" depends="compile.main">
+        <java fork="true" failonerror="yes" classname="com.practice.AdapterDemo">
+            <arg line=""/>
+            <classpath>
+                <pathelement location="${dest.main.dir}"/>
+            </classpath>
+        </java>
+    </target>
+    <target name="compile" depends="compile.main, compile.test"/>
+    <target name="test" depends="compile">
+        <mkdir dir="${test.report.dir}"/>
+        <junit printsummary="yes" haltonerror="yes" haltonfailure="no" fork="yes">
+            <formatter type="plain" usefile="false"/>
+            <formatter type="xml"/>
+            <batchtest todir="${test.report.dir}">
+                <fileset dir="${src.test.dir}">
+                    <include name="**/*Test.java"/>
+                </fileset>
+            </batchtest>
+            <classpath>
+                <pathelement location="lib/junit-4.10.jar"/>
+                <pathelement location="${dest.main.dir}"/>
+                <pathelement location="${dest.test.dir}"/>
+            </classpath>
+        </junit>
+    </target>
+    <target name="report" depends="test">
+        <mkdir dir="${test.report.dir}/html"/>
+        <junitreport todir="${test.report.dir}">
+            <fileset dir="${test.report.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report todir="${test.report.dir}/html"/>
+        </junitreport>
+    </target>
+	<target name="copy">
+		<mkdir dir="${dist.dir}"/>
+		<copy todir="${dist.dir}">
+			<fileset dir="${dest.main.dir}"/>
+		</copy>
+	</target>
+	
+	<target name="jar_cmd">
+		<jar destfile="${lib.dir}/runscript.jar">
+			<fileset dir="${dest.main.dir}">
+				<include name="**/LocalContextFactory.class"/>
+				<include name="**/LocalContext.class"/>
+				<include name="**/SimpleException.class"/>
+				<include name="**/LocalDataSource.class"/>
+				<include name="**/RunScript.class"/>
+			</fileset>
+			<manifest>
+				<attribute name="Main-Class" value="com.itnova.util.RunScript"/>
+				<attribute name="Class-Path" value="jt400.jar"/>
+			</manifest>
+		</jar>
+	</target>
+
+
+	<target name="copy_cmd" depends="jar_cmd">
+		<mkdir dir="${cmd.lib.dir}"/>
+		<copy todir="${cmd.lib.dir}">
+			<fileset dir="${lib.dir}">
+				<include name="jt400.jar"/>
+				<include name="runscript.jar"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="jar_context">
+		<jar destfile="${lib.dir}/local-context.jar">
+			<fileset dir="${dest.main.dir}">
+				<include name="**/LocalContextFactory.class"/>
+				<include name="**/LocalContext.class"/>
+				<include name="**/SimpleException.class"/>
+				<include name="**/LocalDataSource.class"/>
+			</fileset>
+		</jar>
+	</target>
+
+
+</project>

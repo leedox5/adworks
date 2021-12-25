@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="lib/jquery-1.8.1.js"></script>
+	<script type="text/javascript" src="src/calculator.js"></script>
+	<script type="text/javascript">
+		(function(msg) { alert(msg); })('SO');
+		$(function(){
+			report();
+			$('#vstar')[0].onmouseover = function(event) {
+				say('우아!');
+			}
+
+			$("#card_number").validateCreditCardNumber();
+			$("#console").load('someResource');
+		});
+
+		function report() {
+			$('#display').html(
+				$('#testSubject').width()+'x'+$('#testSubject').height()
+			);
+		}
+
+		function say(text)
+		{
+			$('#console').append('<div>'+new Date()+' '+text+'</div>');
+		}
+
+		$(window).resize(function(){
+		    report();
+		});
+	</script>  
+	<style>
+		#card_number_error {
+			background-color: #cfeace;
+			border: 1px solid #00457b;
+			padding: 8px;
+			font-size: .85em;
+		}
+	</style>
+	</head>
+
+	<body>
+		<div id="testSubject">
+			브라우저의 크기를 변경하면 테스트 대상의 크기 역시 변경되고, 이 변화가
+			계산된 값에 반영된다.
+		</div>
+		<div id="creditcard">
+			<input type="text" id="card_number"></input><span id="card_number_error"></span>
+		</div>
+		<div id="display"></div>
+		<img id="vstar" src="ex.jpg" onclick="say('부릉 부릉!')" />
+		<div id="console"></div>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<script type="text/javascript" src="lib/jquery-1.8.1.js"></script>
+		<script type="text/javascript" src="lib/jquery.jqia.selects.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#console").load("code_json.jsp");
+				$("#btn2").click(function(){
+					$.getJSON("code_json.jsp",null,function(data) {
+						$("#dd").loadSelect(data);
+					});
+				});
+				$("#btn1").click(function(){
+					$.get("code_json.jsp",null,function(data) {
+						alert(data);
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<select id="dd"></select><br>
+		<button type="button" id="btn1">get()</button><br>
+		<button type="button" id="btn2">getJSON()</button><br>
+		<div id="console"></div>
+	</body>
+</html>

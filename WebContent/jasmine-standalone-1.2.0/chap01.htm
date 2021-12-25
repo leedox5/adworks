@@ -1,0 +1,27 @@
+<html>
+	<head>
+	<script type="text/javascript" src="lib/jquery-1.8.1.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("<p>Hi!</p>").insertAfter("#followme");
+			$("<div class='foo'>내가 foo를 가졌다.</div><div>나는 foo를 가지지 않았다</div>")
+				.filter(".foo").click(function() {
+					alert("내가 foo이다.");
+				}).end().appendTo("#someParentDiv");
+			$('*').attr('title',function(index) {
+				return '나는'+index+'번 엘리멘트이고 내이름은 '+ (this.id ? this.id : 'unset') + '이다';
+			});
+			
+			var anArray = ['하나','둘','셋'];
+			$.each(anArray, function(n, value) {
+				alert(n+value);
+			});
+			alert($.inArray(2,[1,2,3,4,5]));
+		});
+	</script>
+	</head>
+	<body>
+		<p id="followme">hear</p>
+		<div id="someParentDiv">div 2</div>
+	</body>
+</html>
