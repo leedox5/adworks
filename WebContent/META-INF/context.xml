@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource name="jdbc/cams"
+	          auth="Container"
+	          type="javax.sql.DataSource"
+	          factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+	          driverClassName="com.mysql.cj.jdbc.Driver"
+	          username="cams"
+	          password="A!flehrtm5"
+	          url="jdbc:mysql://localhost:3307/cams" 
+	          maxActive="10"
+	          maxIdle="4"
+	/>
+</Context>
