@@ -17,7 +17,7 @@ public class AdapterDemo
 	public static void main(String[] args)
 	{
 		List<String> list = new ArrayList<String>();
-		list.add("ÀÌÀº°á");
+		list.add("ì´ì€ê²°");
 		list.add("Kevin Parker");
 		Enumeration<String> ite = new IteratorToEnumeration(list.iterator());
 		AdapterDemo.goodMethod(ite);
