@@ -4,7 +4,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import mobis.mcams.common.LangMap;
+import mobis.common.base.LangMap;
 
 public class MyContextListener implements ServletContextListener {
 

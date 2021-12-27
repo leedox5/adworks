@@ -1,6 +1,6 @@
 package com.practice;
 
-import mobis.mcams.common.LangMap;
+import mobis.common.base.LangMap;
 
 public class McamsUtil {
 
