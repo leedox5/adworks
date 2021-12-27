@@ -2,7 +2,7 @@ package com.itnova.util;
 
 public class SimpleException extends Exception {
 	/**
-	 *  ÇÑ±Û
+	 *  í•œê¸€
 	 */
 	private static final long serialVersionUID = -932522379533378489L;
 	private Throwable nestedException;
