@@ -4,3 +4,6 @@ doc
 /target/
 .idea
 target
+.classpath
+.project
+.tern-project
