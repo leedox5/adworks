@@ -2,7 +2,7 @@
 '-- NAME
 '--    GetDepends.vbs
 '-- DESCRIPTION
-'--    Å×ÀÌºí¿¡ Á¾¼ÓµÈ View, Proc, Functionµî °¡Á®¿À±â
+'--    í…Œì´ë¸”ì— ì¢…ì†ëœ View, Proc, Functionë“± ê°€ì ¸ì˜¤ê¸°
 '-- NOTE
 '--    
 '-- MODIFIED

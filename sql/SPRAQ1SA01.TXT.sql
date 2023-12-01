@@ -1,70 +1,70 @@
-/** ÀÚµ¿°ø¹ý(¿ëÁ¢·ù) - ÀÔ·ÂÀúÀå **/
+/** ìžë™ê³µë²•(ìš©ì ‘ë¥˜) - ìž…ë ¥ì €ìž¥ **/
 
 /**
- * [°³Á¤ÀÌ·Â] 2009.08.05 : @COMT_SQL0_CODE ÀÚ¸®¼ö¸¦ ÀÛ°Ô Àâ¾Æ Host Variable..¿À·ù ³ª´ø°Í ¼öÁ¤ÇÔ. [P.S.R]
- *            2012.09.14 : @COMC_INDS_CODE Ãß°¡
+ * [ê°œì •ì´ë ¥] 2009.08.05 : @COMT_SQL0_CODE ìžë¦¬ìˆ˜ë¥¼ ìž‘ê²Œ ìž¡ì•„ Host Variable..ì˜¤ë¥˜ ë‚˜ë˜ê²ƒ ìˆ˜ì •í•¨. [P.S.R]
+ *            2012.09.14 : @COMC_INDS_CODE ì¶”ê°€
  */
 
 CREATE PROCEDURE RMSFLE.SPRAQ1SA011
 (
-    IN  @COMH_SABN          VARCHAR(8),      -- 1»ç¹ø
-    IN  @COMH_CORP_CODE     CHAR(4),         -- 2¹ýÀÎÄÚµå
+    IN  @COMH_SABN          VARCHAR(8),      -- 1ì‚¬ë²ˆ
+    IN  @COMH_CORP_CODE     CHAR(4),         -- 2ë²•ì¸ì½”ë“œ
     IN  @SPMS_PART_NO       VARCHAR(21),     -- 3PART NO
     IN  @SPMS_EONO          VARCHAR(10),     -- 4EO NO
-    IN  @SPMS_CUMT_NO       INTEGER,         -- 5°è»ê¹øÈ£
-    IN  @COMC_WELD_SEQ0     INTEGER,         -- 6¿ëÁ¢SEQ
-    IN  @COMC_KIND_GUBN     VARCHAR(8),      -- 7¿ëÁ¢Á¾·ùºÐ·ùÄÚµå
-    IN  @COMC_KIND_CODE     VARCHAR(8),      -- 8¿ëÁ¢Á¾·ù
-    IN  @COMC_GUBN_GUBN     VARCHAR(8),      -- 9¿ëÁ¢±¸ºÐºÐ·ùÄÚµå
-    IN  @COMC_GUBN_CODE     VARCHAR(8),      -- 10¿ëÁ¢±¸ºÐ
-    IN  @COMC_SIZE_GUBN     VARCHAR(8),      -- 11Á¦Ç°SIZEºÐ·ùÄÚµå
-    IN  @COMC_SIZE_CODE     VARCHAR(8),      -- 12Á¦Ç°SIZE
-    IN  @COMC_ICNT_GUBN     VARCHAR(8),      -- 13ºÎÇ°¼ö ºÐ·ùÄÚµå
-    IN  @COMC_ICNT_CODE     VARCHAR(8),      -- 14ºÎÇ°¼ö
-    IN  @COMC_JIG0_YN       VARCHAR(1),      -- 15¿ëÁ¢JIG
-    IN  @COMC_WELD_PONT     DECIMAL(10,2),   -- 16¿ëÁ¢Á¡¼ö
-    IN  @COMC_HWSP_CNT0     DECIMAL(10,2),   -- 17H/W»ç¾ç¼ö
-    IN  @COMC_BASE_GUBN     VARCHAR(8),      -- 18¸ðÀçÀçÁú ºÐ·ùÄÚµå
-    IN  @COMC_BASE_CODE     VARCHAR(8),      -- 19¸ðÀçÀçÁú
-    IN  @COMC_THIK_GUBN     VARCHAR(8),      -- 20¼ÒÀç¹ÚÆÇµÎ²²ºÐ·ùÄÚµå
-    IN  @COMC_THIK_CODE     VARCHAR(8),      -- 21¼ÒÀç¹ÚÆÇµÎ²²
-    IN  @COMC_WELD_TERM     DECIMAL(10,2),   -- 22¿ëÁ¢±¸°£
-    IN  @COMC_WELD_LENG     DECIMAL(10,2),   -- 23¿ëÁ¢±æÀÌ
-    IN  @COMC_POND_CNT0     DECIMAL(10,2),   -- 24ÀüµÑ·¹¿ëÁ¢¼ö
-    IN  @COMC_INDS_CODE     VARCHAR(2),      -- 25Àû¿ë¾÷Á¾
+    IN  @SPMS_CUMT_NO       INTEGER,         -- 5ê³„ì‚°ë²ˆí˜¸
+    IN  @COMC_WELD_SEQ0     INTEGER,         -- 6ìš©ì ‘SEQ
+    IN  @COMC_KIND_GUBN     VARCHAR(8),      -- 7ìš©ì ‘ì¢…ë¥˜ë¶„ë¥˜ì½”ë“œ
+    IN  @COMC_KIND_CODE     VARCHAR(8),      -- 8ìš©ì ‘ì¢…ë¥˜
+    IN  @COMC_GUBN_GUBN     VARCHAR(8),      -- 9ìš©ì ‘êµ¬ë¶„ë¶„ë¥˜ì½”ë“œ
+    IN  @COMC_GUBN_CODE     VARCHAR(8),      -- 10ìš©ì ‘êµ¬ë¶„
+    IN  @COMC_SIZE_GUBN     VARCHAR(8),      -- 11ì œí’ˆSIZEë¶„ë¥˜ì½”ë“œ
+    IN  @COMC_SIZE_CODE     VARCHAR(8),      -- 12ì œí’ˆSIZE
+    IN  @COMC_ICNT_GUBN     VARCHAR(8),      -- 13ë¶€í’ˆìˆ˜ ë¶„ë¥˜ì½”ë“œ
+    IN  @COMC_ICNT_CODE     VARCHAR(8),      -- 14ë¶€í’ˆìˆ˜
+    IN  @COMC_JIG0_YN       VARCHAR(1),      -- 15ìš©ì ‘JIG
+    IN  @COMC_WELD_PONT     DECIMAL(10,2),   -- 16ìš©ì ‘ì ìˆ˜
+    IN  @COMC_HWSP_CNT0     DECIMAL(10,2),   -- 17H/Wì‚¬ì–‘ìˆ˜
+    IN  @COMC_BASE_GUBN     VARCHAR(8),      -- 18ëª¨ìž¬ìž¬ì§ˆ ë¶„ë¥˜ì½”ë“œ
+    IN  @COMC_BASE_CODE     VARCHAR(8),      -- 19ëª¨ìž¬ìž¬ì§ˆ
+    IN  @COMC_THIK_GUBN     VARCHAR(8),      -- 20ì†Œìž¬ë°•íŒë‘ê»˜ë¶„ë¥˜ì½”ë“œ
+    IN  @COMC_THIK_CODE     VARCHAR(8),      -- 21ì†Œìž¬ë°•íŒë‘ê»˜
+    IN  @COMC_WELD_TERM     DECIMAL(10,2),   -- 22ìš©ì ‘êµ¬ê°„
+    IN  @COMC_WELD_LENG     DECIMAL(10,2),   -- 23ìš©ì ‘ê¸¸ì´
+    IN  @COMC_POND_CNT0     DECIMAL(10,2),   -- 24ì „ë‘˜ë ˆìš©ì ‘ìˆ˜
+    IN  @COMC_INDS_CODE     VARCHAR(2),      -- 25ì ìš©ì—…ì¢…
 
-    IN  @COMC_SHET_GUBN     VARCHAR(8),      -- 26¿ëÁ¢¸Å¼ö±¸ºÐ    
-    IN  @COMC_SHET_CODE     VARCHAR(8),      -- 27¿ëÁ¢¸Å¼ö    
-    IN  @COMC_BLNK_LENG     DECIMAL(10,2),   -- 28BLANK±æÀÌ   
+    IN  @COMC_SHET_GUBN     VARCHAR(8),      -- 26ìš©ì ‘ë§¤ìˆ˜êµ¬ë¶„    
+    IN  @COMC_SHET_CODE     VARCHAR(8),      -- 27ìš©ì ‘ë§¤ìˆ˜    
+    IN  @COMC_BLNK_LENG     DECIMAL(10,2),   -- 28BLANKê¸¸ì´   
     IN  @COMC_BLNK_CAVT     INTEGER,         -- 29BLANK CVT   
-    IN  @COMC_PROD_CNT0     INTEGER,         -- 30³â°£»ý»ê°¹¼ö
-    IN  @COMC_PART_LENG     DECIMAL(10,2),   -- 31ºÎÇ°±æÀÌ    
-    IN  @COMC_TWBL_WIDT     DECIMAL(10,2),   -- 32Àåº¯        
-    IN  @COMC_TWBL_LENG     DECIMAL(10,2),   -- 33´Üº¯        
+    IN  @COMC_PROD_CNT0     INTEGER,         -- 30ë…„ê°„ìƒì‚°ê°¯ìˆ˜
+    IN  @COMC_PART_LENG     DECIMAL(10,2),   -- 31ë¶€í’ˆê¸¸ì´    
+    IN  @COMC_TWBL_WIDT     DECIMAL(10,2),   -- 32ìž¥ë³€        
+    IN  @COMC_TWBL_LENG     DECIMAL(10,2),   -- 33ë‹¨ë³€        
 
-    IN  @COMC_MATL_STND1    CHAR(1),         -- 34 Àç·á´Ü°¡Ç¥ÁØ±¸ºÐ        
-    IN  @COMC_MATL_CODE1    VARCHAR(12),     -- 35 ÀçÁúÄÚµå                
-    IN  @COMC_MATL_APDT1    CHAR(8),         -- 36 Àû¿ëÀÏ                  
-    IN  @COMC_MATL_IMSI1    CHAR(4),         -- 37 Àç·á´Ü°¡ÀÓ½Ã±¸ºÐ        
-    IN  @COMC_NET0_WEGT1    DECIMAL(10,2),   -- 38 NETÁß·®                 
+    IN  @COMC_MATL_STND1    CHAR(1),         -- 34 ìž¬ë£Œë‹¨ê°€í‘œì¤€êµ¬ë¶„        
+    IN  @COMC_MATL_CODE1    VARCHAR(12),     -- 35 ìž¬ì§ˆì½”ë“œ                
+    IN  @COMC_MATL_APDT1    CHAR(8),         -- 36 ì ìš©ì¼                  
+    IN  @COMC_MATL_IMSI1    CHAR(4),         -- 37 ìž¬ë£Œë‹¨ê°€ìž„ì‹œêµ¬ë¶„        
+    IN  @COMC_NET0_WEGT1    DECIMAL(10,2),   -- 38 NETì¤‘ëŸ‰                 
 
-    IN  @COMC_MATL_STND2    CHAR(1),         -- 39 Àç·á´Ü°¡Ç¥ÁØ±¸ºÐ        
-    IN  @COMC_MATL_CODE2    VARCHAR(12),     -- 40 ÀçÁúÄÚµå                
-    IN  @COMC_MATL_APDT2    CHAR(8),         -- 41 Àû¿ëÀÏ                  
-    IN  @COMC_MATL_IMSI2    CHAR(4),         -- 42 Àç·á´Ü°¡ÀÓ½Ã±¸ºÐ        
-    IN  @COMC_NET0_WEGT2    DECIMAL(10,2),   -- 43 NETÁß·®                 
+    IN  @COMC_MATL_STND2    CHAR(1),         -- 39 ìž¬ë£Œë‹¨ê°€í‘œì¤€êµ¬ë¶„        
+    IN  @COMC_MATL_CODE2    VARCHAR(12),     -- 40 ìž¬ì§ˆì½”ë“œ                
+    IN  @COMC_MATL_APDT2    CHAR(8),         -- 41 ì ìš©ì¼                  
+    IN  @COMC_MATL_IMSI2    CHAR(4),         -- 42 ìž¬ë£Œë‹¨ê°€ìž„ì‹œêµ¬ë¶„        
+    IN  @COMC_NET0_WEGT2    DECIMAL(10,2),   -- 43 NETì¤‘ëŸ‰                 
 
-    IN  @COMC_MATL_STND3    CHAR(1),         -- 44 Àç·á´Ü°¡Ç¥ÁØ±¸ºÐ        
-    IN  @COMC_MATL_CODE3    VARCHAR(12),     -- 45 ÀçÁúÄÚµå                
-    IN  @COMC_MATL_APDT3    CHAR(8),         -- 46 Àû¿ëÀÏ                  
-    IN  @COMC_MATL_IMSI3    CHAR(4),         -- 47 Àç·á´Ü°¡ÀÓ½Ã±¸ºÐ        
-    IN  @COMC_NET0_WEGT3    DECIMAL(10,2),   -- 48 NETÁß·®                 
+    IN  @COMC_MATL_STND3    CHAR(1),         -- 44 ìž¬ë£Œë‹¨ê°€í‘œì¤€êµ¬ë¶„        
+    IN  @COMC_MATL_CODE3    VARCHAR(12),     -- 45 ìž¬ì§ˆì½”ë“œ                
+    IN  @COMC_MATL_APDT3    CHAR(8),         -- 46 ì ìš©ì¼                  
+    IN  @COMC_MATL_IMSI3    CHAR(4),         -- 47 ìž¬ë£Œë‹¨ê°€ìž„ì‹œêµ¬ë¶„        
+    IN  @COMC_NET0_WEGT3    DECIMAL(10,2),   -- 48 NETì¤‘ëŸ‰                 
 
-    IN  @COMC_MATL_STND4    CHAR(1),         -- 49 Àç·á´Ü°¡Ç¥ÁØ±¸ºÐ        
-    IN  @COMC_MATL_CODE4    VARCHAR(12),     -- 50 ÀçÁúÄÚµå                
-    IN  @COMC_MATL_APDT4    CHAR(8),         -- 51 Àû¿ëÀÏ                  
-    IN  @COMC_MATL_IMSI4    CHAR(4),         -- 52 Àç·á´Ü°¡ÀÓ½Ã±¸ºÐ        
-    IN  @COMC_NET0_WEGT4    DECIMAL(10,2),   -- 53 NETÁß·®                 
+    IN  @COMC_MATL_STND4    CHAR(1),         -- 49 ìž¬ë£Œë‹¨ê°€í‘œì¤€êµ¬ë¶„        
+    IN  @COMC_MATL_CODE4    VARCHAR(12),     -- 50 ìž¬ì§ˆì½”ë“œ                
+    IN  @COMC_MATL_APDT4    CHAR(8),         -- 51 ì ìš©ì¼                  
+    IN  @COMC_MATL_IMSI4    CHAR(4),         -- 52 ìž¬ë£Œë‹¨ê°€ìž„ì‹œêµ¬ë¶„        
+    IN  @COMC_NET0_WEGT4    DECIMAL(10,2),   -- 53 NETì¤‘ëŸ‰                 
 
     OUT @COMT_MESG_CODE     VARCHAR(10),     -- 54 
     OUT @COMT_MESG          VARCHAR(3000),   -- 55
@@ -80,7 +80,7 @@ SET OPTION COMMIT = *CHG
 
 BEGIN
     --------------------------------------------------------
-    -- º¯¼ö ¼±¾ð
+    -- ë³€ìˆ˜ ì„ ì–¸
     --------------------------------------------------------
     DECLARE TODAY               CHAR(8)          DEFAULT '';
     DECLARE TITLE               VARCHAR(20)      DEFAULT '';
@@ -88,7 +88,7 @@ BEGIN
     DECLARE EXCEPTION_TEXT      VARCHAR(2000)    DEFAULT '';
 
     --------------------------------------------------------
-    -- EXCEPTION ¼±¾ð
+    -- EXCEPTION ì„ ì–¸
     --------------------------------------------------------
     DECLARE EXIT HANDLER FOR SQLSTATE 'UE002' BEGIN
         SET @COMT_MESG_CODE = 'SA-002';
@@ -99,15 +99,15 @@ BEGIN
         GET DIAGNOSTICS EXCEPTION 1 EXCEPTION_TEXT = MESSAGE_TEXT;
 
         SET @COMT_MESG_CODE = 'SA-003';
-        SET @COMT_MESG      = 'MD000103 : ' || EXCEPTION_TEXT; -- DB ¿À·ù¹ß»ý
+        SET @COMT_MESG      = 'MD000103 : ' || EXCEPTION_TEXT; -- DB ì˜¤ë¥˜ë°œìƒ
         SET @COMT_SQL0_CODE = EXCEPTION_CODE;
     END;
 
     --------------------------------------------------------
-    -- °øÅë ½ÇÇà
+    -- ê³µí†µ ì‹¤í–‰
     --------------------------------------------------------
     SET @COMT_MESG_CODE         = 'SA-002';
-    SET @COMT_MESG              = 'M1900147'; -- ÀúÀåÀ» ½ÇÆÐÇÏ¿´½À´Ï´Ù.
+    SET @COMT_MESG              = 'M1900147'; -- ì €ìž¥ì„ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.
     SET @COMT_SQL0_CODE         = '0';
     SET @COMT_PRGM_ID           = 'SPRAQ1SA01';
     SET @COMT_LINE_NO           = 'ST-10000';
@@ -115,7 +115,7 @@ BEGIN
     SELECT REPLACE(CHAR(CURDATE()),'-','') INTO TODAY FROM SYSIBM.SYSDUMMY1;
 
     --------------------------------------------------------
-    -- ·ÎÁ÷ Ã³¸®
+    -- ë¡œì§ ì²˜ë¦¬
     --------------------------------------------------------
 
     SET @COMT_LINE_NO = 'ST-11000';
@@ -141,12 +141,12 @@ BEGIN
                  AND WELI_WELD_SEQ0 = @COMC_WELD_SEQ0
               )
     THEN
-    	SET @COMT_MESG = 'M1100302 WELD_SEQ0:' || @COMC_WELD_SEQ0; --±â µî·ÏµÈ µ¥ÀÌÅÍ°¡ Á¸ÀçÇÕ´Ï´Ù.
+    	SET @COMT_MESG = 'M1100302 WELD_SEQ0:' || @COMC_WELD_SEQ0; --ê¸° ë“±ë¡ëœ ë°ì´í„°ê°€ ì¡´ìž¬í•©ë‹ˆë‹¤.
         SIGNAL SQLSTATE 'UE002';
     END IF;
 
 
-    -- ¿ëÁ¢·ù ÀÔ·ÂÀ» INSERT
+    -- ìš©ì ‘ë¥˜ ìž…ë ¥ì„ INSERT
     SET @COMT_LINE_NO = 'ST-30000';
     INSERT INTO RMSFLE.PFRAWELI (
           WELI_CORP_CODE
@@ -278,6 +278,6 @@ BEGIN
 
 
     SET @COMT_MESG_CODE = 'SA-001' ;
-    SET @COMT_MESG      = 'M1900169'; --Á¤»óÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù.
+    SET @COMT_MESG      = 'M1900169'; --ì •ìƒì ìœ¼ë¡œ ì €ìž¥ë˜ì—ˆìŠµë‹ˆë‹¤.
 
 END

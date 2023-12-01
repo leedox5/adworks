@@ -11,10 +11,10 @@ CREATE Procedure [dbo].[sp_CreateDataLoadScript]
 -- NAME
 --    sp_CreateDataLoadScript.sql
 -- DESCRIPTION
---    ÄÁÅÙÃ÷¸¦ Ãß°¡ÇÏ±â À§ÇÑ ÇÁ·Î½ÃÀú »ı¼º
+--    ì»¨í…ì¸ ë¥¼ ì¶”ê°€í•˜ê¸° ìœ„í•œ í”„ë¡œì‹œì € ìƒì„±
 -- NOTE
 --    sqlcmd -E -d TW_SYS -i sp_CreateDataLoadScript.sql 
---    ÇÁ·Î½ÃÀúÈ­
+--    í”„ë¡œì‹œì €í™”
 -- MODIFIED
 --    [2010-04-02] created by Myungho Lee
 ------------------------------------------------------------------------------------------

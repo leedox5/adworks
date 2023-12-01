@@ -11,10 +11,10 @@ CREATE Procedure [dbo].[sp_CreateDataLoadScriptDB2]
 -- NAME
 --    sp_CreateDataLoadScriptDB2.sql
 -- DESCRIPTION
---    ÄÁÅÙÃ÷¸¦ Ãß°¡ÇÏ±â À§ÇÑ ÇÁ·Î½ÃÀú »ı¼º
+--    ì»¨í…ì¸ ë¥¼ ì¶”ê°€í•˜ê¸° ìœ„í•œ í”„ë¡œì‹œì € ìƒì„±
 -- NOTE
 --    sqlcmd -E -d TW_SYS -i sp_CreateDataLoadScriptDB2.sql 
---    ÇÁ·Î½ÃÀúÈ­
+--    í”„ë¡œì‹œì €í™”
 -- MODIFIED
 --    [2012-09-20] created by Myungho Lee
 ------------------------------------------------------------------------------------------

@@ -48,7 +48,7 @@ go
 
 
 
---OLE DB 救凳
+--OLE DB 鞎堧惃
 
 sp_addlinkedserver @server=N'MCAMS_DEV', 
                    @srvproduct=N'DB2400 UDB for iSeries',
@@ -75,7 +75,7 @@ EXEC sp_serveroption 'MCAMS_DEV', 'rpc out', true
 --
 
 
--- 规过1
+-- 氚╇矔1
 SELECT TOP 10 *
 FROM   MCAMSDEV.KPTD191.RMSFLE.PFRACOFI
 WHERE  COFI_CORP_CODE = 'K001'
@@ -83,7 +83,7 @@ AND    COFI_EONO      = 'E01'
 AND    COFI_CUMT_NO   = '1127132'
 FETCH  FIRST 20 ROWS ONLY
 
--- 规过2
+-- 氚╇矔2
 EXEC ('
 SELECT *
 FROM   RMSFLE.PFRACOFI
